@@ -30,4 +30,5 @@ I couldn't implement the token POST form the "carto-api" as was asked because I 
 # Place to improve
 - As it wasn't a UI test, I didn't make it responsive for mobile, so it should be taken as a desktop-only page, and with some use of MaterialUI, I should adapt it for mobile.
 - The map layer constructors could be taken outside the map component for better implementation.
-- Credentials and map initial view state can be incorporated inside the store.# Explinations
+- Credentials and map initial view state can be incorporated inside the store.# Explinations.
+- Load Map with a lazy loading strategy.
