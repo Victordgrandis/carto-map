@@ -8,16 +8,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { Box } from '@mui/material';
 import { Header } from './components/elements/header';
-import { MapStyleSidebar } from './components/modules/home/map-style-sidebar';
-
-interface LayerStyle {
-  fillColor: string;
-  outline: {
-    size: string;
-    color: string;
-  };
-  radius: number;
-}
+import { MapSidebar } from './components/modules/home/map-sidebar';
 
 function App() {
   return (
@@ -33,7 +24,7 @@ function App() {
           }}
         >
           <Box sx={{ width: '400px', boxShadow: 1 }}>
-            <MapStyleSidebar />
+            <MapSidebar />
           </Box>
           <Box
             sx={{

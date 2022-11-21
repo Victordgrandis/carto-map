@@ -29,8 +29,8 @@ export const MapComponent = () => {
   const retailsStoresLayerState = useSelector(
     (state: RootState) => state.app.retailStores,
   );
-  const usaBlockgroupLayerState = useSelector(
-    (state: RootState) => state.app.usaBlockgroup,
+  const usaSociodemographicsLayerState = useSelector(
+    (state: RootState) => state.app.usaSociodemographics,
   );
   const INITIAL_VIEW_STATE = {
     longitude: 0,
@@ -49,7 +49,7 @@ export const MapComponent = () => {
   setDefaultCredentials({
     apiVersion: API_VERSIONS.V3,
     accessToken: process.env.REACT_APP_PUBLIC_MAP_TOKEN,
-    apiBaseUrl: 'https://gcp-europe-west1.api.carto.com',
+    apiBaseUrl: process.env.REACT_APP_PUBLIC_API_BASE_URL,
   });
 
   const layerAirport = new CartoLayer({
@@ -90,22 +90,22 @@ export const MapComponent = () => {
       : 0,
   });
 
-  const layerUsaBlockgroup = new CartoLayer({
-    id: 'UsaBlockgroupCartoLayer',
+  const layerusaSociodemographics = new CartoLayer({
+    id: 'usaSociodemographicsCartoLayer',
     type: MAP_TYPES.TILESET,
     connection: 'carto_dw',
     data: 'carto-demo-data.demo_tilesets.sociodemographics_usa_blockgroup',
-    getLineColor: usaBlockgroupLayerState
-      ? usaBlockgroupLayerState.getLineColor
+    getLineColor: usaSociodemographicsLayerState
+      ? usaSociodemographicsLayerState.getLineColor
       : [0, 0, 0],
-    getFillColor: usaBlockgroupLayerState
-      ? usaBlockgroupLayerState.getFillColor
+    getFillColor: usaSociodemographicsLayerState
+      ? usaSociodemographicsLayerState.getFillColor
       : [0, 0, 0],
-    pointRadiusMinPixels: usaBlockgroupLayerState
-      ? usaBlockgroupLayerState.pointRadiusMinPixels
+    pointRadiusMinPixels: usaSociodemographicsLayerState
+      ? usaSociodemographicsLayerState.pointRadiusMinPixels
       : 0,
-    lineWidthMinPixels: usaBlockgroupLayerState
-      ? usaBlockgroupLayerState.lineWidthMinPixels
+    lineWidthMinPixels: usaSociodemographicsLayerState
+      ? usaSociodemographicsLayerState.lineWidthMinPixels
       : 0,
   });
 
@@ -114,7 +114,7 @@ export const MapComponent = () => {
       <DeckGL
         initialViewState={INITIAL_VIEW_STATE}
         controller={true}
-        layers={[layerUsaBlockgroup, layerAirport, layerRetailStores]}
+        layers={[layerusaSociodemographics, layerAirport, layerRetailStores]}
       >
         <Map
           mapLib={maplibregl}

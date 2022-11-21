@@ -1,59 +1,7 @@
-import { Grid, Stack, TextField, Typography } from '@mui/material';
-import { Box, hexToRgb, rgbToHex } from '@mui/system';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  setAirports,
-  setRetailStores,
-  setUsaBlockgroup,
-} from '../../../store/appSlice';
-import { RootState } from '../../../store/store';
+import { Grid, TextField, Typography } from '@mui/material';
+import { Box, rgbToHex } from '@mui/system';
+import { useDispatch } from 'react-redux';
 import { hexToRgbArray } from '../../../utils/colors';
-
-interface MapStyleSidebarProps {}
-
-export const MapStyleSidebar: React.FC<MapStyleSidebarProps> = () => {
-  const airportsLayerState = useSelector(
-    (state: RootState) => state.app.airports,
-  );
-  const retailsStoresLayerState = useSelector(
-    (state: RootState) => state.app.retailStores,
-  );
-  const usaBlockgroupLayerState = useSelector(
-    (state: RootState) => state.app.usaBlockgroup,
-  );
-
-  return (
-    <Box
-      sx={{
-        marginTop: '60px',
-        paddingLeft: '10px',
-        paddingRight: '10px',
-      }}
-    >
-      {airportsLayerState && (
-        <LayerInputs
-          title="Airports Layer"
-          store={airportsLayerState}
-          dispatchFn={setAirports}
-        />
-      )}
-      {retailsStoresLayerState && (
-        <LayerInputs
-          title="Retail Stores Layer"
-          store={retailsStoresLayerState}
-          dispatchFn={setRetailStores}
-        />
-      )}
-      {usaBlockgroupLayerState && (
-        <LayerInputs
-          title="Sociodemographics Usa Blockup Layer"
-          store={usaBlockgroupLayerState}
-          dispatchFn={setUsaBlockgroup}
-        />
-      )}
-    </Box>
-  );
-};
 
 interface LayerInputsProps {
   title: string;
@@ -61,14 +9,13 @@ interface LayerInputsProps {
   dispatchFn: any;
 }
 
-const LayerInputs: React.FC<LayerInputsProps> = ({
+export const LayerInputs: React.FC<LayerInputsProps> = ({
   title,
   store,
   dispatchFn,
 }) => {
   const dispatch = useDispatch();
   const handleChangeStyle = (style: string, newVal: any) => {
-    console.log(title, newVal);
     dispatch(dispatchFn({ ...store, [style]: newVal }));
   };
 

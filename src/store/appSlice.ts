@@ -13,7 +13,7 @@ interface MapState {
     getFillColor: number[];
     lineWidthMinPixels: number;
   };
-  usaBlockgroup: {
+  usaSociodemographics: {
     pointRadiusMinPixels: number;
     getLineColor: number[];
     getFillColor: number[];
@@ -34,7 +34,7 @@ const initialState: MapState = {
     getLineColor: [93, 73, 193],
     getFillColor: [75, 51, 193],
   },
-  usaBlockgroup: {
+  usaSociodemographics: {
     lineWidthMinPixels: 1,
     pointRadiusMinPixels: 2,
     getLineColor: [215, 106, 106],
@@ -52,12 +52,13 @@ const slice = createSlice({
     setRetailStores: (state, action) => {
       state.retailStores = action.payload;
     },
-    setUsaBlockgroup: (state, action) => {
-      state.usaBlockgroup = action.payload;
+    setusaSociodemographics: (state, action) => {
+      state.usaSociodemographics = action.payload;
     },
   },
 });
 
 export default slice.reducer;
 
-export const { setAirports, setRetailStores, setUsaBlockgroup } = slice.actions;
+export const { setAirports, setRetailStores, setusaSociodemographics } =
+  slice.actions;
