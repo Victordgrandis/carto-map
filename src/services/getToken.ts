@@ -1,31 +1,21 @@
-export const getToken = () => {
+export const getToken = async () => {
   var myHeaders = new Headers();
-  myHeaders.append('Content-Type', 'application/json');
-  myHeaders.append(
-    'Authorization',
-    'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfNzRlM3Fic3QiLCJqdGkiOiIyZTBiNTQzZCJ9.VrQtuTF1uzpm62Eu6_COK5Qbme82RLk56WM3bavp6x0',
+  myHeaders.append('content-type', 'application/x-www-form-urlencoded');
+
+  var urlencoded = new URLSearchParams();
+  urlencoded.append('grant_type', 'client_credentials');
+  urlencoded.append('client_id', 'VGj2CTuH2CZ2pmOq3QpJ2pnK6ME1CHIL');
+  urlencoded.append(
+    'client_secret',
+    'LRvQNSsrxO44Cs7vrBdmCaJXBrlLPbd0EVAi6J7BwsquML0nXPcGzRaTZZr0t9PD',
   );
+  urlencoded.append('audience', 'carto-cloud-native-api');
 
-  var raw = JSON.stringify({
-    grants: [
-      {
-        connection_name: 'carto_dw',
-        source:
-          '`carto-demo-data.demo_tables.airports`, `carto-demo-data.demo_tables.retail_stores`, `carto-demo-data.demo_tilesets.sociodemographics_usa_blockgroup`',
-      },
-    ],
-    referers: [],
-    allowed_apis: ['sql', 'maps', 'imports'],
-  });
-
-  var requestOptions = {
+  return await fetch('https://auth.carto.com/oauth/token', {
     method: 'POST',
     headers: myHeaders,
-    body: raw,
-  };
-
-  fetch('https://gcp-us-east1.api.carto.com/v3/tokens', requestOptions)
-    .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.log('error', error));
+    body: urlencoded,
+    mode: 'no-cors',
+    redirect: 'follow',
+  });
 };

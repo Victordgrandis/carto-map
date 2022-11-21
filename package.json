@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@carto/react-basemaps": "^1.4.6",
-    "@carto/react-core": "^1.4.6",
+    "@carto/react-basemaps": "^1.4.7",
+    "@carto/react-core": "^1.4.7",
     "@deck.gl/carto": "^8.8.19",
     "@deck.gl/core": "^8.8.19",
     "@deck.gl/geo-layers": "^8.8.19",
@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "^4.5.8",
     "@mui/material": "^5.10.13",
+    "@reduxjs/toolkit": "^1.9.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^13.5.0",
     "@types/node": "^16.18.3",
@@ -24,7 +25,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-map-gl": "^7.0.19",
+    "react-redux": "^8.0.5",
     "react-scripts": "5.0.1",
+    "redux-persist": "^6.0.0",
     "typescript": "^4.8.4",
     "web-vitals": "^2.1.4"
   },
@@ -33,8 +36,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
