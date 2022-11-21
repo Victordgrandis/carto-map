@@ -2,6 +2,7 @@
   "name": "carto-map",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://victordgrandis.github.io/carto-map/",
   "dependencies": {
     "@carto/react-basemaps": "^1.4.7",
     "@carto/react-core": "^1.4.7",
